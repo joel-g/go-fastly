@@ -108,12 +108,16 @@ func (c *Client) GetCustomCertificate(i *GetCustomCertificateInput) (*CustomCert
 	return &cc, nil
 }
 
+
+// CreateCustomCertificateInput is used as input to the CreateCustomCertificate function.
 type CreateCustomCertificateInput struct {
 	CertBlob string `jsonapi:"attr,cert_blob"`
 	Name     string `jsonapi:"attr,name"`
+	ID       string `jsonapi:"primary,tls_certificate"` // ID value does not need to be set.
 }
 
-func (c *Client) CreateCustomCertificate(i *CreateCustomCertificateInput) (*CustomCertificate, error) { // TODO Possible platform bug, returns "Internal Server Error" if "type" is blank
+// CreateCustomCertificate creates a custom TLS certificate.
+func (c *Client) CreateCustomCertificate(i *CreateCustomCertificateInput) (*CustomCertificate, error) {
 
 	if i.CertBlob == "" {
 		return nil, ErrMissingCertBlob
@@ -137,8 +141,9 @@ func (c *Client) CreateCustomCertificate(i *CreateCustomCertificateInput) (*Cust
 	return &cc, nil
 }
 
+// UpdateCustomCertificateInput is used as input to the UpdateCustomCertificate function.
 type UpdateCustomCertificateInput struct {
-	ID       string `jsonapi:"attr,id"`
+	ID       string `jsonapi:"primary,tls_certificate"`
 	CertBlob string `jsonapi:"attr,cert_blob"`
 	Name     string `jsonapi:"attr,name"`
 }
