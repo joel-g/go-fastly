@@ -108,7 +108,8 @@ func (c *Client) GetCustomCertificate(i *GetCustomCertificateInput) (*CustomCert
 	return &cc, nil
 }
 
-// CreateCustomCertificateInput is used as inpput to the CreateCustomCertificate function.
+
+// CreateCustomCertificateInput is used as input to the CreateCustomCertificate function.
 type CreateCustomCertificateInput struct {
 	CertBlob string `jsonapi:"attr,cert_blob"`
 	Name     string `jsonapi:"attr,name"`
@@ -140,12 +141,11 @@ func (c *Client) CreateCustomCertificate(i *CreateCustomCertificateInput) (*Cust
 	return &cc, nil
 }
 
-// UpdateCustomCertificateInput is used as inpput to the UpdateCustomCertificate function.
+// UpdateCustomCertificateInput is used as input to the UpdateCustomCertificate function.
 type UpdateCustomCertificateInput struct {
 	ID       string `jsonapi:"primary,tls_certificate"`
 	CertBlob string `jsonapi:"attr,cert_blob"`
 	Name     string `jsonapi:"attr,name"`
-	Type     string `jsonapi:"primary,tls_certificate"`
 }
 
 // UpdateCustomCertificate replace a certificate with a newly reissued certificate.
